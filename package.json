@@ -1,0 +1,34 @@
+{
+  "name": "api-gateway",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "proto:gen": "proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=src/proto src/proto/*.proto",
+    "start:dev": "nodemon",
+    "start": "node build/index.js",
+    "create-network": "sh -c ./network.sh",
+    "build": "tsc && sh -c 'cp -r src/proto/*.proto build/proto'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@grpc/grpc-js": "^1.10.9",
+    "@grpc/proto-loader": "^0.7.13",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-graphql": "^0.12.0",
+    "util": "^0.12.5"
+  }
+}

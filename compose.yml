@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: excercise-api-gateway
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    environment:
+      - NODE_ENV=production
+      - APP_PORT=${APP_PORT}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - excercise-fullstack-engine
+    command: >
+      sh -c "if [ ${NODE_ENV} = development ]; then npm run start:dev; else npm run start; fi"
+
+networks:
+  excercise-fullstack-engine:
+    external: true
